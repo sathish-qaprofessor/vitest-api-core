@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build output
+dist/
+
+# Logs
+logs/
+*.log
+
+# Test reports
+reports/allure-results/
+reports/allure-report/
+coverage/
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS
+.DS_Store
+Thumbs.db
+
+# npm auth (local token file - never commit)
+# .npmrc  ← keep this commented if you use .npmrc for registry config only
+
+reports/

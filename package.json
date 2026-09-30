@@ -1,0 +1,86 @@
+{
+  "name": "@jsi-staging/vitest-api-core",
+  "version": "1.5.7",
+  "description": "Fluent API testing framework powered by Pactum, Vitest, Winston, and Ajv",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./non-tty-reporter": {
+      "types": "./dist/reporter/non-tty-reporter.d.ts",
+      "import": "./dist/reporter/non-tty-reporter.mjs",
+      "require": "./dist/reporter/non-tty-reporter.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src/reporter",
+    "src/reports",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "bin": {
+    "pactum-report": "./src/reporter/customize-allure.js",
+    "pactum-report-build": "./src/reporter/build-allure-report.js"
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "report:consolidate": "node src/reporter/consolidate-allure-results.js",
+    "report:generate": "node src/reporter/consolidate-allure-results.js && allure generate reports/allure-results -o reports/allure-report --clean && node src/reporter/customize-allure.js",
+    "report:open": "allure open reports/allure-report",
+    "report": "npm run report:generate && npm run report:open",
+    "lint": "tsc --noEmit",
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run build",
+    "postinstall": "playwright install chromium"
+  },
+  "keywords": [
+    "api-testing",
+    "fluent-api",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ajv": "^8.17.0",
+    "allure-commandline": "^2.38.1",
+    "allure-js-commons": "^3.6.0",
+    "allure-vitest": "^3.6.0",
+    "js-yaml": "^4.1.0",
+    "pactum": "^3.7.0",
+    "playwright": "1.59.1",
+    "vitest": "4.1.11",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.0.0",
+    "@vitest/ui": "4.1.11",
+    "rimraf": "^6.0.0",
+    "tsup": "^8.3.0",
+    "typescript": "^5.7.0"
+  },
+  "peerDependencies": {
+    "vitest": "4.1.11"
+  },
+  "peerDependenciesMeta": {},
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jsi-staging/vitest-api-core.git"
+  }
+}

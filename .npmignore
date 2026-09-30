@@ -1,0 +1,14 @@
+src/
+tests/
+config/
+vitest.config.ts
+tsup.config.ts
+tsconfig.json
+*.test.ts
+*.spec.ts
+.git
+.github
+.vscode
+logs/
+allure-results/
+reports/
